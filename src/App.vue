@@ -3,10 +3,8 @@
     <header class="header">
       <h1 class="h1">NASA Astronomy Picture of the Day</h1>
       <div id="nav">
-        <router-link :to="{ path: monthPath }">
-          All {{ month }} Pictures
-        </router-link>
-        ||<router-link to="/">{{ today }}</router-link>
+        <router-link :to="monthPath">All {{ month }} Pictures</router-link>
+        <router-link to="/">{{ today }}</router-link>
       </div>
     </header>
     <router-view v-bind:pictures="pictures" v-bind:loading="loading" />
@@ -85,7 +83,11 @@ export default {
 
 #nav {
   margin: auto;
-  width: 220px;
+  width: 300px;
+  font-size: 16px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  text-align: center;
 }
 
 @media screen and (max-width: 495px) {

@@ -1,6 +1,6 @@
 <template>
-  <div class="AstronomyPicture">
-    <p v-if="loading">Loading...</p>
+  <div v-if="pictures[day - 1]" class="AstronomyPicture">
+    <p v-if="loading" class="loading">Loading...</p>
     <div class="AstronomyPicture--div">
       <img
         v-if="!loading && pictures[day - 1].media_type === 'image'"
@@ -34,10 +34,12 @@
       </footer>
     </div>
   </div>
+  <NotFound v-else />
 </template>
 
 <script>
 import router from '../router'
+import NotFound from './NotFound'
 
 export default {
   name: 'AstronomyPicture',
@@ -49,11 +51,20 @@ export default {
     handleNext() {
       router.push({ path: `${parseInt(this.day) + 1}` })
     }
+  },
+  components: {
+    NotFound
   }
 }
 </script>
 
 <style scoped>
+.loading {
+  width: 100%;
+  text-align: center;
+  margin: 8px 0;
+}
+
 .AstronomyPicture {
   width: 100%;
   margin: auto;
