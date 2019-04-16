@@ -6,8 +6,7 @@
         <router-link :to="{ path: monthPath }">
           All {{ month }} Pictures
         </router-link>
-        | 
-        <router-link to="/">{{ today }}</router-link>
+        ||<router-link to="/">{{ today }}</router-link>
       </div>
     </header>
     <router-view v-bind:pictures="pictures" v-bind:loading="loading" />
@@ -68,14 +67,16 @@ export default {
 
 #app {
   background-color: #f9f9f9;
+  position: relative;
+  min-height: 100vh;
 }
 
 .header {
   position: sticky;
-  top: 0;
   background-color: #ffffff;
   padding: 16px 0 16px;
   box-shadow: var(--heavy-shadow);
+  z-index: 10;
 }
 
 .h1 {
@@ -84,6 +85,17 @@ export default {
 
 #nav {
   margin: auto;
-  width: 200px;
+  width: 220px;
+}
+
+@media screen and (max-width: 495px) {
+  .header {
+    height: 51px;
+    top: calc(100vh - 51px);
+  }
+
+  .h1 {
+    display: none;
+  }
 }
 </style>

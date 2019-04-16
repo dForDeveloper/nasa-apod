@@ -54,6 +54,9 @@ export default {
   border-radius: 4px;
   text-align: center;
   background-color: #ffffff;
+  box-sizing: border-box;
+  width: 448px;
+  margin: auto;
 }
 
 .AstronomyCard:hover {
@@ -78,5 +81,26 @@ export default {
 .iframe {
   border: 0;
   vertical-align: middle;
+}
+
+@media screen and (max-width: 495px) {
+  .AstronomyCard {
+    width: 100%;
+    padding: 16px;
+  }
+
+  .img {
+    height: 200px;
+  }
+
+  .iframe {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .img {
+    height: 150px;
+  }
 }
 </style>
