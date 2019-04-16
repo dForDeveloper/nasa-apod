@@ -15,12 +15,14 @@ export default new Router({
     {
       path: '/:year/:month/:day',
       name: 'today',
-      component: AstronomyPicture
+      component: AstronomyPicture,
+      props: true
     },
     {
       path: '/:year/:month/',
       name: 'month',
-      component: AstronomyContainer
+      component: AstronomyContainer,
+      props: true
     }
   ]
 })
