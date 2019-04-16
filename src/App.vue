@@ -7,7 +7,8 @@
         <router-link to="/">{{ today }}</router-link>
       </div>
     </header>
-    <router-view v-bind:pictures="pictures" v-bind:loading="loading" />
+    <p class="p" v-if="error">{{ error }}</p>
+    <router-view v-else v-bind:pictures="pictures" v-bind:loading="loading" />
   </div>
 </template>
 
@@ -22,7 +23,8 @@ export default {
       month: moment().format('MMMM'),
       monthPath: moment().format('/YYYY/MM'),
       pictures: [],
-      loading: true
+      loading: true,
+      error: ''
     }
   },
   async created() {
@@ -36,8 +38,13 @@ export default {
       for (let i = 1; i <= date; i++) {
         const url = `${process.env.VUE_APP_BASE_URL}&date=${yearAndMonth}-${i}`;
         const response = await fetch(url);
-        const picture = await response.json();
-        this.pictures.push(picture);
+        if (response.ok) {
+          const picture = await response.json();
+          this.pictures.push(picture);
+        } else {
+          const { status, statusText } = response;
+          this.error = `Error: Status ${status}, ${statusText}`;
+        }
       }
     }
   }
@@ -88,6 +95,12 @@ export default {
   display: grid;
   grid-template-columns: 1fr 1fr;
   text-align: center;
+}
+
+.p {
+  width: 100%;
+  text-align: center;
+  margin: 8px 0;
 }
 
 @media screen and (max-width: 495px) {
