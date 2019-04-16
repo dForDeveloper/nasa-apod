@@ -1,10 +1,13 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link :to="{ path: monthPath }">All {{ month }} Pictures</router-link> | 
+      <router-link :to="{ path: monthPath }">
+        All {{ month }} Pictures
+      </router-link>
+       | 
       <router-link to="/">{{ today }}</router-link>
     </div>
-    <router-view/>
+    <router-view v-bind:pictures="pictures" v-bind:loading="loading" />
   </div>
 </template>
 
@@ -18,7 +21,24 @@ export default {
       today: moment().format("MMMM Do"),
       month: moment().format('MMMM'),
       monthPath: moment().format('/YYYY/MM'),
-      pictures: []
+      pictures: [],
+      loading: true
+    }
+  },
+  async created() {
+    await this.fetchPictures();
+    this.loading = false;
+  },
+  methods: {
+    async fetchPictures() {
+      const yearAndMonth = moment().format('YYYY-MM');
+      const date = new Date().getDate();
+      for (let i = 1; i <= date; i++) {
+        const url = `${process.env.VUE_APP_BASE_URL}&date=${yearAndMonth}-${i}`;
+        const response = await fetch(url);
+        const picture = await response.json();
+        this.pictures.push(picture);
+      }
     }
   }
 }
