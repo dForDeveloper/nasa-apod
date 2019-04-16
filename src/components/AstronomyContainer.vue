@@ -22,8 +22,10 @@ export default {
 <style scoped>
 .AstronomyContainer {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  width: 90%;
+  grid-template-columns: repeat(3, 1fr);
+  width: 100%;
+  padding: 24px;
   margin: auto;
+  grid-gap: 24px;
 }
 </style>
