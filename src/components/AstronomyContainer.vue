@@ -1,6 +1,6 @@
 <template>
   <div class="AstronomyContainer">
-    <p v-if="loading">Loading...</p>
+    <p v-if="loading" class="loading">Loading...</p>
     <div v-bind:key="picture.date" v-for="picture in pictures">
       <AstronomyCard v-bind:picture="picture" v-bind:loading="loading" />
     </div>
@@ -20,6 +20,13 @@ export default {
 </script>
 
 <style scoped>
+.loading {
+  width: 100%;
+  text-align: center;
+  margin: 8px 0;
+  grid-column: 1/3;
+}
+
 .AstronomyContainer {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
