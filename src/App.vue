@@ -3,7 +3,7 @@
     <header class="header">
       <h1 class="h1">NASA Astronomy Picture of the Day</h1>
       <div id="nav">
-        <router-link :to="monthPath">All {{ month }} Pictures</router-link>
+        <router-link :to="monthPath">All of {{ month }}</router-link>
         <router-link to="/">{{ today }}</router-link>
       </div>
     </header>
@@ -90,7 +90,7 @@ export default {
 
 #nav {
   margin: auto;
-  width: 300px;
+  width: 320px;
   font-size: 16px;
   display: grid;
   grid-template-columns: 1fr 1fr;
