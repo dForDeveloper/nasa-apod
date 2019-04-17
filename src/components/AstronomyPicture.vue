@@ -115,6 +115,7 @@ export default {
   padding: 8px 16px;
   font-size: 1rem;
   outline: none;
+  background-color: #ffffff;
 }
 
 .button:hover {
