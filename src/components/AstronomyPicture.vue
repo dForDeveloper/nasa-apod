@@ -81,6 +81,7 @@ export default {
   bottom: 0;
   color: #ffffff;
   margin-bottom: 16px;
+  height: 70px;
 }
 
 .AstronomyPicture--div {
@@ -93,7 +94,9 @@ export default {
 
 .h2 {
   text-align: center;
-  vertical-align: middle;
+  align-self: center;
+  overflow-x: auto;
+  padding: 0 8px;
 }
 
 .img, .iframe {
@@ -144,6 +147,11 @@ export default {
     color: #000000;
     margin-bottom: 0;
     padding-bottom: 8px;
+    height: 100px;
+  }
+
+  .h2 {
+    font-size: 1.25rem;
   }
 }
 </style>
