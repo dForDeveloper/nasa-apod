@@ -1,6 +1,5 @@
 <template>
   <div v-if="pictures[day - 1]" class="AstronomyPicture">
-    <p v-if="loading" class="loading">Loading...</p>
     <div class="AstronomyPicture--div">
       <img
         v-if="!loading && pictures[day - 1].media_type === 'image'"
@@ -34,7 +33,8 @@
       </footer>
     </div>
   </div>
-  <NotFound v-else />
+  <p v-else-if="loading" class="loading">Loading...</p>
+  <NotFound v-else-if="!loading && !pictures[day - 1]" />
 </template>
 
 <script>
